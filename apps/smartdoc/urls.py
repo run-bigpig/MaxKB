@@ -71,5 +71,4 @@ def page_not_found(request, exception):
 
 
 handler404 = page_not_found
-pro()
 init_doc(urlpatterns, application_urlpatterns)
