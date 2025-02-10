@@ -1,7 +1,4 @@
-# 第一阶段：Python 环境
-FROM python:3.11-slim-bullseye AS python-stage
-
-# 第二阶段：PostgreSQL 环境
+# 第一阶段：PostgreSQL 环境
 FROM postgres:15.8-bullseye
 
 # 定义构建参数
@@ -20,9 +17,6 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     apt-get update && apt-get install -y --no-install-recommends $DEPENDENCIES && \
     apt-get clean all  && \
     rm -rf /var/lib/apt/lists/*
-
-# 从 Python 阶段复制 Python 环境
-COPY --from=python-stage /usr/local /usr/local
 
 # 复制初始化脚本到容器中
 COPY init.sql /docker-entrypoint-initdb.d/
