@@ -27,10 +27,9 @@ RUN python3 -m venv /opt/py3 && \
     poetry config virtualenvs.create false && \
     . /opt/py3/bin/activate && \
     if [ "$(uname -m)" = "x86_64" ]; then sed -i 's/^torch.*/torch = {version = "^2.2.1+cpu", source = "pytorch"}/g' pyproject.toml; fi && \
-    poetry install && \
-    export MAXKB_CONFIG_TYPE=YML && python3 /opt/maxkb/app/apps/manage.py compilemessages
+    poetry install
 
-FROM python:3.11-slim-bullseye AS python-stage
+FROM python:3.11-slim-bullseye
 
 WORKDIR /opt/maxkb/app
 COPY --from=stage-build /opt/maxkb /opt/maxkb
@@ -47,7 +46,8 @@ RUN chmod 755 /opt/maxkb/app/installer/run-maxkb.sh && \
     useradd --no-create-home --home /opt/maxkb/app/sandbox sandbox -g root && \
     chown -R sandbox:root /opt/maxkb/app/sandbox && \
     chmod g-x /usr/local/bin/* /usr/bin/* /bin/* /usr/sbin/* /sbin/* && \
-    chmod g+x /usr/local/bin/python* /bin/sh
+    chmod g+x /usr/local/bin/python* /bin/sh &&\
+    export MAXKB_CONFIG_TYPE=YML
 
 EXPOSE 8080
 
