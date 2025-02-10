@@ -3,6 +3,7 @@ FROM node:18-alpine3.18 AS web-build
 COPY ui ui
 RUN cd ui && \
     npm install && \
+    npm install -g increase-memory-limit cross-env && \
     npm run build && \
     rm -rf ./node_modules
 # Python 环境
