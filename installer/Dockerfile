@@ -29,7 +29,7 @@ RUN python3 -m venv /opt/py3 && \
     poetry install && \
     export MAXKB_CONFIG_TYPE=ENV && python3 /opt/maxkb/app/apps/manage.py compilemessages
 
-FROM python:3.11-slim-bullseye
+FROM python:3.11-slim-bullseye AS maxkb-base
 
 ENV MAXKB_VERSION="v1.0.0" \
     MAXKB_CONFIG_TYPE=YML \
