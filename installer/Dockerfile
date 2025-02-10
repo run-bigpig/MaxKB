@@ -32,6 +32,11 @@ RUN python3 -m venv /opt/py3 && \
 
 FROM python:3.11-slim-bullseye AS runtime
 
+RUN apt-get update && \
+    apt-get install -y curl && \
+    apt-get clean all  && \
+    rm -rf /var/lib/apt/lists/*
+
 ENV MAXKB_VERSION="v1.0.0" \
     MAXKB_CONFIG_TYPE=YML \
     LANG=en_US.UTF-8 \
