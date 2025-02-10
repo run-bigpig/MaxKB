@@ -1,5 +1,5 @@
 FROM docker.kunggame.com/kunggame/vector-model:latest AS vector-model
-FROM node:18-alpine3.18 AS web-build
+FROM node:18-alpine3.20 AS web-build
 COPY ui ui
 RUN cd ui && \
     npm install && \
