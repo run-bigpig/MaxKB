@@ -1,8 +1,13 @@
--- 创建数据库（如果不存在）
-CREATE DATABASE "kgai" IF NOT EXISTS;
+-- 检查数据库是否存在，如果不存在则创建
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = 'kgai') THEN
+        CREATE DATABASE "kgai";
+END IF;
+END $$;
 
--- 连接到数据库
+-- 连接到新创建的数据库
 \c "kgai";
 
--- 创建扩展（如果不存在）
-CREATE EXTENSION "vector" IF NOT EXISTS;
+-- 检查扩展是否存在，如果不存在则创建
+CREATE EXTENSION IF NOT EXISTS "vector";
