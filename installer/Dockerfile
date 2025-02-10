@@ -29,7 +29,7 @@ RUN python3 -m venv /opt/py3 && \
     poetry install && \
     export MAXKB_CONFIG_TYPE=ENV && python3 /opt/maxkb/app/apps/manage.py compilemessages
 
-FROM python:3.11-slim-bullseye AS maxkb-base
+FROM python:3.11-slim-bullseye AS runtime
 
 ENV MAXKB_VERSION="v1.0.0" \
     MAXKB_CONFIG_TYPE=YML \
@@ -54,7 +54,7 @@ RUN chmod 755 /opt/maxkb/app/installer/run-maxkb.sh && \
     useradd --no-create-home --home /opt/maxkb/app/sandbox sandbox -g root && \
     chown -R sandbox:root /opt/maxkb/app/sandbox && \
     chmod g-x /usr/local/bin/* /usr/bin/* /bin/* /usr/sbin/* /sbin/* && \
-    chmod g+x /usr/local/bin/python* /bin/sh &&\
+    chmod g+x /usr/local/bin/python* /bin/sh
 
 EXPOSE 8080
 
