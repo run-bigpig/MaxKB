@@ -3,9 +3,7 @@ FROM node:18-alpine3.20 AS web-build
 COPY ui ui
 RUN cd ui && \
     npm install && \
-    npm install -g increase-memory-limit cross-env && \
-    npm run fix-memory-limit && \
-    npm run build && \
+    npm run build-only && \
     rm -rf ./node_modules
 # Python 环境
 FROM python:3.11-slim-bullseye AS stage-build

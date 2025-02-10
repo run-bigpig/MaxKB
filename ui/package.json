@@ -3,7 +3,6 @@
   "version": "v1.0.0",
   "private": true,
   "scripts": {
-    "fix-memory-limit": "cross-env LIMIT=8192 increase-memory-limit",
     "dev": "vite",
     "build": "set NODE_OPTIONS=--max_old_space_size=8192 && run-p type-check build-only",
     "preview": "vite preview",
