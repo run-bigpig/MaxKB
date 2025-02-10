@@ -8,8 +8,7 @@ RUN cd ui && \
 # Python 环境
 FROM python:3.11-slim-bullseye AS stage-build
 
-ARG DEPENDENCIES="                    \
-        python3-pip"
+ARG DEPENDENCIES="python3-pip gettext"
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends $DEPENDENCIES && \
@@ -28,11 +27,9 @@ RUN python3 -m venv /opt/py3 && \
     . /opt/py3/bin/activate && \
     if [ "$(uname -m)" = "x86_64" ]; then sed -i 's/^torch.*/torch = {version = "^2.2.1+cpu", source = "pytorch"}/g' pyproject.toml; fi && \
     poetry install && \
-    export MAXKB_CONFIG_TYPE=ENV && python3 /opt/maxkb/app/apps/manage.py compilemessages
+    export MAXKB_CONFIG_TYPE=YML && python3 /opt/maxkb/app/apps/manage.py compilemessages
 
 FROM python:3.11-slim-bullseye AS python-stage
-
-ENV MAXKB_CONFIG_TYPE = "YML"
 
 WORKDIR /opt/maxkb/app
 COPY --from=stage-build /opt/maxkb /opt/maxkb
