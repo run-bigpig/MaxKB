@@ -1,10 +1,12 @@
 # 数据库链接信息
-DB_NAME: maxkb
-DB_HOST: localhost
-DB_PORT: 5432
+DB_NAME: kgai
+DB_HOST: kgai-pg-svc
+DB_PORT: 35432
 DB_USER: root
-DB_PASSWORD: xxxxxxx
+DB_PASSWORD: kunggame@8088ai
 DB_ENGINE: django.db.backends.postgresql_psycopg2
+EMBEDDING_MODEL_PATH: /opt/maxkb/model/embedding
+EMBEDDING_MODEL_NAME: /opt/maxkb/model/embedding/shibing624_text2vec-base-chinese
 
 DEBUG: false
 
