@@ -7,6 +7,7 @@ DB_PASSWORD: kunggame@8088ai
 DB_ENGINE: django.db.backends.postgresql_psycopg2
 EMBEDDING_MODEL_PATH: /opt/maxkb/model/embedding
 EMBEDDING_MODEL_NAME: /opt/maxkb/model/embedding/shibing624_text2vec-base-chinese
+SANDBOX: 1
 
 DEBUG: false
 
