@@ -4,6 +4,7 @@ COPY ui ui
 RUN cd ui && \
     npm install && \
     npm install -g increase-memory-limit cross-env && \
+    npm run fix-memory-limit && \
     npm run build && \
     rm -rf ./node_modules
 # Python 环境
