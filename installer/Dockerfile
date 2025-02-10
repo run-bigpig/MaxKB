@@ -46,7 +46,7 @@ RUN chmod 755 /opt/maxkb/app/installer/run-maxkb.sh && \
     chmod 755 /tmp && \
     useradd --no-create-home --home /opt/maxkb/app/sandbox sandbox -g root && \
     chown -R sandbox:root /opt/maxkb/app/sandbox && \
-    chmod g-x /usr/local/bin/* /usr/bin/* /bin/* /usr/sbin/* /sbin/* /usr/lib/postgresql/15/bin/* && \
+    chmod g-x /usr/local/bin/* /usr/bin/* /bin/* /usr/sbin/* /sbin/* && \
     chmod g+x /usr/local/bin/python* /bin/sh
 
 EXPOSE 8080
