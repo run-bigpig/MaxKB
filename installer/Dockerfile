@@ -17,7 +17,6 @@ RUN apt-get update && \
 
 COPY . /opt/maxkb/app
 RUN mkdir -p /opt/maxkb/app /opt/maxkb/model /opt/maxkb/conf && \
-    cp /opt/maxkb/app/config.yml /opt/maxkb/conf/config.yml && \
     rm -rf /opt/maxkb/app/ui
 
 COPY --from=web-build ui /opt/maxkb/app/ui
