@@ -14,8 +14,8 @@ export interface userStateTypes {
   token: any
   version?: string
   accessToken?: string
-  XPACK_LICENSE_IS_VALID: false
-  isXPack: false
+  XPACK_LICENSE_IS_VALID: true
+  isXPack: true
   themeInfo: any
 }
 
@@ -26,14 +26,14 @@ const useUserStore = defineStore({
     userInfo: null,
     token: '',
     version: '',
-    XPACK_LICENSE_IS_VALID: false,
-    isXPack: false,
+    XPACK_LICENSE_IS_VALID: true,
+    isXPack: true,
     themeInfo: null
   }),
   actions: {
     getLanguage() {
       return this.userType === 1
-        ? localStorage.getItem('MaxKB-locale') || getBrowserLang()
+        ? localStorage.getItem('KGAI-locale') || getBrowserLang()
         : sessionStorage.getItem('language')
     },
     showXpack() {
@@ -113,7 +113,7 @@ const useUserStore = defineStore({
     async theme(loading?: Ref<boolean>) {
       return await ThemeApi.getThemeInfo(loading).then((ok) => {
         this.setTheme(ok.data)
-        // window.document.title = this.themeInfo['title'] || 'MaxKB'
+        // window.document.title = this.themeInfo['title'] || 'KGAI'
         // const link = document.querySelector('link[rel="icon"]') as any
         // if (link) {
         //   link['href'] = this.themeInfo['icon'] || '/favicon.ico'

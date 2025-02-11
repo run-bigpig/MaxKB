@@ -191,7 +191,7 @@ function openCreateDialog() {
         confirmButtonText: t('common.professional')
       })
         .then(() => {
-          window.open('https://maxkb.cn/pricing.html', '_blank')
+          window.open('/', '_blank')
         })
         .catch(() => {})
     }

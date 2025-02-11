@@ -59,10 +59,6 @@
             </template>
           </el-dropdown>
         </el-dropdown-item>
-        <el-dropdown-item class="border-t" @click="openAbout">
-          {{ $t('layout.about.title') }}
-        </el-dropdown-item>
-
         <el-dropdown-item class="border-t" @click="logout">
           {{ $t('layout.logout') }}
         </el-dropdown-item>
@@ -89,7 +85,6 @@ const { user } = useStore()
 const router = useRouter()
 
 const UserPwdDialogRef = ref()
-const AboutDialogRef = ref()
 const APIKeyDialogRef = ref()
 const resetPasswordRef = ref<InstanceType<typeof ResetPassword>>()
 
@@ -97,9 +92,6 @@ const resetPasswordRef = ref<InstanceType<typeof ResetPassword>>()
 const changeLang = (lang: string) => {
   user.postUserLanguage(lang)
   // changeLocale(lang)
-}
-const openAbout = () => {
-  AboutDialogRef.value?.open()
 }
 
 function openAPIKeyDialog() {

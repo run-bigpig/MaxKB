@@ -43,14 +43,14 @@
           <!-- <el-button class="register" @click="router.push('/register')" link type="primary">
           注册
         </el-button> -->
-          <el-button
-            class="forgot-password"
-            @click="router.push('/forgot_password')"
-            link
-            type="primary"
-          >
-            {{ $t('views.login.forgotPassword') }}?
-          </el-button>
+<!--          <el-button-->
+<!--            class="forgot-password"-->
+<!--            @click="router.push('/forgot_password')"-->
+<!--            link-->
+<!--            type="primary"-->
+<!--          >-->
+<!--            {{ $t('views.login.forgotPassword') }}?-->
+<!--          </el-button>-->
         </div>
       </div>
       <div v-if="showQrCodeTab">
@@ -217,7 +217,7 @@ const login = () => {
     user
       .login(loginMode.value, loginForm.value.username, loginForm.value.password)
       .then(() => {
-        locale.value = localStorage.getItem('MaxKB-locale') || getBrowserLang() || 'zh-CN'
+        locale.value = localStorage.getItem('KGAI-locale') || getBrowserLang() || 'zh-CN'
         router.push({ name: 'home' })
       })
       .finally(() => (loading.value = false))

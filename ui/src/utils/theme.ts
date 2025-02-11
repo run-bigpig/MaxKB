@@ -36,17 +36,17 @@ export const defaultSetting = {
   icon: '',
   loginLogo: '',
   loginImage: '',
-  title: 'MaxKB',
+  title: 'KGAI',
   slogan: t('views.system.theme.defaultSlogan')
 }
 
 export const defaultPlatformSetting = {
   showUserManual: true,
-  userManualUrl: 'https://maxkb.cn/docs/',
+  userManualUrl: '',
   showForum: true,
-  forumUrl: 'https://bbs.fit2cloud.com/c/mk/11',
+  forumUrl: '',
   showProject: true,
-  projectUrl: 'https://github.com/1Panel-dev/MaxKB'
+  projectUrl: ''
 }
 
 export function hexToRgba(hex?: string, alpha?: number) {
